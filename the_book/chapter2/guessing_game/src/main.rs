@@ -20,8 +20,7 @@ fn main() {
         .expect("Failed to read line");
 
         // u32 will give error in runtime because u32 - u32 = u32 =/= negative
-
-        let guess: i32 = match guess.trim().parse() {
+        let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
                 println!("Enter a number!");
@@ -35,7 +34,7 @@ fn main() {
                 break;
             }
             Ordering::Greater => println!("You are incorrect by {}.", guess - secret_number),
-            Ordering::Less => println!("You are incorrect by {}.", guess - secret_number),
+            Ordering::Less => println!("You are incorrect by {}.", guess as i32 - secret_number as i32),
         }
     }
 }
